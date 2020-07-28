@@ -1,0 +1,56 @@
+type User {
+  _id: ID!
+  name: String!
+  email: String!
+  phone: String!
+  password: String!
+  confirmPassword: String!
+  address: Address!
+  active: Boolean!
+}
+
+type Address {
+  street: String!
+  city: String!
+  neighborhood: String!
+  state: String!
+  number: Int!
+  complement: String
+  referencePoint: String
+}
+
+type Query {
+  users: [User!]!
+  user(id: ID!): User!
+}
+
+type Mutation {
+  createUser(data: UserInput!): User!
+  updateUser(id: ID!, data: UserInput!): User!
+  deleteUser(id: ID!): Boolean
+}
+
+type Subscription {
+  userAdded: User!
+}
+
+# Inputs
+input UserInput {
+  name: String!
+  email: String!
+  phone: String!
+  password: String!
+  confirmPassword: String!
+  address: AddressInput!
+  active: Boolean!
+}
+
+input AddressInput {
+  street: String!
+  city: String!
+  neighborhood: String!
+  state: String!
+  number: Int!
+  complement: String
+  referencePoint: String
+}
