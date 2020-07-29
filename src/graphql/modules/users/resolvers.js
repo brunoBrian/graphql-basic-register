@@ -1,4 +1,5 @@
 import User from '../../../models/User';
+import Address from '../../../models/Address';
 import { USER_ADDED } from './channels';
 
 export default {
@@ -10,8 +11,10 @@ export default {
     user: (_, { id }) => User.findById(id),
   },
   Mutation: {
-    createUser: (_, { data }, { pubsub }) => {
-      const user = User.create(data);
+    createUser: async(_, { data }, { pubsub }) => {
+      const user = await User.create(data);
+
+      await Address.create({...data.address, user: user._id })
 
       pubsub.publish(USER_ADDED, {
         userAdded: user

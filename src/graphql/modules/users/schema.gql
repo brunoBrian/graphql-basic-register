@@ -9,16 +9,6 @@ type User {
   active: Boolean!
 }
 
-type Address {
-  street: String!
-  city: String!
-  neighborhood: String!
-  state: String!
-  number: Int!
-  complement: String
-  referencePoint: String
-}
-
 type Query {
   users: [User!]!
   user(id: ID!): User!
@@ -41,16 +31,6 @@ input UserInput {
   phone: String!
   password: String!
   confirmPassword: String!
-  address: AddressInput!
+  address: AddressInput
   active: Boolean!
-}
-
-input AddressInput {
-  street: String!
-  city: String!
-  neighborhood: String!
-  state: String!
-  number: Int!
-  complement: String
-  referencePoint: String
 }

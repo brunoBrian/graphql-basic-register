@@ -1,0 +1,33 @@
+type Address {
+  _id: ID!
+  street: String!
+  city: String!
+  neighborhood: String!
+  state: String!
+  number: Int!
+  complement: String
+  referencePoint: String
+  user: User!
+}
+
+type Query {
+  addresses: [Address]!
+  address(id: ID!): [Address!]!
+}
+
+type Mutation {
+  createAddress(data: AddressInput!): Address!
+  updateAddress(id: ID!, data: AddressInput!): Address!
+  deleteAddress(id: ID!): Boolean
+}
+
+input AddressInput {
+  street: String!
+  city: String!
+  neighborhood: String!
+  state: String!
+  number: Int!
+  complement: String
+  referencePoint: String
+  user: ID
+}

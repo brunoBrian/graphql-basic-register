@@ -3,37 +3,17 @@ import mongoose from 'mongoose';
 const Schema = new mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   phone: {
     type: Number,
-    required: true
-  },
-  address: {
-    street: {
-      type: String,
-      required: true
-    },
-    city: {
-      type: String,
-      required: true
-    },
-    neighborhood: {
-      type: String,
-      required: true
-    },
-    state: {
-      type: String,
-      required: true
-    },
-    number: {
-      type: Number,
-      required: true
-    },
+    required: true,
+    unique: true
   },
   password: {
     type: String,
